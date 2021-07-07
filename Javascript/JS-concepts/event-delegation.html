@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>Event delegation</title>
+  </head>
+
+  <body>
+    <div id="form">
+      <ul id="category">
+        <li id="laptops">laptops</li>
+        <li id="cameras">cameras</li>
+        <li id="shoes">shoes</li>
+      </ul>
+      <!-- <input type="text" id="name" data-uppercase />
+      <input type="text" id="pan" />
+      <input type="text" id="mobile" /> -->
+    </div>
+    <script>
+      //Instead of attaching event handlers to each and every child elements/HTML elements individually, we should
+      //rather attach event handler to parent of these elements.
+
+      document.querySelector("#category").addEventListener("click", (event) => {
+        console.log("Catergory parent clicked!", event.target);
+        if (event.target.tagName == "LI") {
+          window.location.href = "/" + event.target.id;
+        }
+      });
+
+      // document.querySelector('#form').addEventListener('keyup', (event) => {
+      //   console.log(event);
+      //   if(event.target.dataset.uppercase != undefined) {
+      //     event.target.value = event.target.value.toUpperCase();
+      //   }
+      // })
+
+      // Pros
+      // 1. Memory (We just need to attach single event handler).
+      // 2. Writing less code.
+      // 3. DOM manipulation
+
+      // cons
+      // 1. all the events are not bubbled up (ex: blur, focus, resize).
+      // 2. If we are using stopPropagation, then we can't use event delegation.
+    </script>
+  </body>
+</html>

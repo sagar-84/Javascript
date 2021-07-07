@@ -1,0 +1,43 @@
+Mounting: These methods are called in the following order when an instance of a component is being created and inserted into the DOM:
+1. constructor()
+2. static getDerivedStateFromProps() - static getDerivedStateFromProps(props, state)
+3. render()
+4. componentDidMount()
+
+Updating: An update can be caused by changes to props or state.
+1. static getDerivedStateFromProps() - static getDerivedStateFromProps(props, state)
+2. shouldComponentUpdate() - shouldComponentUpdate(nextProps, nextState)
+3. render()
+4. getSnapshotBeforeUpdate()
+5. componentDidUpdate() -
+componentDidUpdate(prevProps) {
+  // Typical usage (don't forget to compare props):
+  if (this.props.userID !== prevProps.userID) {
+    this.fetchData(this.props.userID);
+  }
+}
+
+Unmounting: This method is called when a component is being removed from the DOM:
+1. componentWillUnmount() - Perform any necessary cleanup in this method, such as invalidating timers, 
+   canceling network requests, or cleaning up any subscriptions that were created in componentDidMount().
+
+PureComponent -
+performs a shallow comparison of props and state, and reduces the chance that you’ll skip a necessary update. It performs shouldComponentUpdate() 
+internally.
+
+Fragments -
+let you group a list of children without adding extra nodes to the DOM.
+render() {
+  return (
+    <React.Fragment>
+      <ChildA />
+      <ChildB />
+      <ChildC />
+    </React.Fragment>
+  );
+}
+
+Portals -
+Portals provide a first-class way to render children into a DOM node that exists outside the DOM hierarchy of the parent component.
+ReactDOM.createPortal(child, container)
+The first argument (child) is any renderable React child, such as an element, string, or fragment. The second argument (container) is a DOM element.

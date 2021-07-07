@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<head>
+  <title>Throttling</title>
+</head>
+<body>
+  <script>
+    // Throttling in  javascript
+
+    const expensive = () => {
+      console.log("Expensive...");
+    };
+
+    // window.addEventListener("resize", expensive); // expensive will be called on each and every resize event.
+
+    window.addEventListener("resize", betterExpensive);
+
+    const throttle = (fn, limit) => {
+      let flag = true; // To restrict our function call, we will use flag.
+      return function () {
+        let context = this,
+          args = arguments;
+        if (flag) {
+          fn.apply(context, args); // make a function call if the flag is true. And immediately set flag = false.
+          flag = false;
+          setTimeout(() => {
+            flag = true; // flag will be true after limit is expired.
+          }, limit);
+        }
+      };
+    };
+
+    const betterExpensive = throttle(expensive, 100); // betterExpensive will only be called after throttle limit is crossed.
+  </script>
+</body>

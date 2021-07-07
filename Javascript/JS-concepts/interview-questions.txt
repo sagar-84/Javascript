@@ -1,0 +1,14 @@
+async vs defer
+https://bitsofco.de/async-vs-defer/
+
+The Modern JavaScript Tutorial
+https://javascript.info/
+
+https://www.toptal.com/javascript/interview-questions
+
+https://www.interviewbit.com/javascript-interview-questions/
+
+https://github.com/sunil12738/frontend-developer-interview-questions
+
+What happens after you enter the  URL of your website in the address bar, till the page is rendered?
+  // https://developers.google.com/web/updates/2018/09/inside-browser-part1

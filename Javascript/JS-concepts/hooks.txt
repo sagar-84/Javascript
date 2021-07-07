@@ -1,0 +1,59 @@
+Hook is a special function that allows us to “hook into” React features.
+
+useEffect(callback, [])
+
+callback is the callback function containing side-effect logic(subscriptions, timers, logging etc).
+[] is optional array of dependencies. useEffect() executes callback only if the dependencies have changed between renderings.
+
+componentDidMount - To invoke a side-effect once after the component mounting, use an empty dependencies array:
+import { useEffect } from 'react';
+
+function Greet({ name }) {
+  const message = `Hello, ${name}!`;
+
+  useEffect(() => {
+    // Runs once, after mounting
+    document.title = 'Greetings page';
+  }, []);
+
+  return <div>{message}</div>;
+}
+
+Even if the component re-renders with different name property, the side-effect runs only once after the first render.
+
+componentDidUpdate - Each time the side-effect uses props or state values, you must indicate these values as dependencies:
+import { useEffect } from 'react';
+
+function Greet({ name }) {
+  const message = `Hello, ${name}!`;
+
+  useEffect(() => {
+    document.title = `Greetings to ${name}`; 
+  }, [name]);
+
+  return <div>{message}</div>;
+}
+
+componentWillUnmount - Some side-effects need cleanup: remove event listeners, clear timers.
+If the callback of useEffect(callback) returns a function, then useEffect() considers this as an effect cleanup:
+import { useEffect } from 'react';
+
+function RepeatMessage({ message }) {
+  useEffect(() => {
+    const id = setInterval(() => {
+      console.log(message);
+    }, 2000);
+    return () => {
+      clearInterval(id);
+    };
+  }, [message]);
+
+  return <div>I'm logging to console "{message}"</div>;
+}
+
+
+useCallback - https://www.robinwieruch.de/react-usecallback-hook
+useMemo - https://www.robinwieruch.de/react-usememo-hook
+React.memo - https://www.robinwieruch.de/react-memo
+useRef - https://reactjs.org/docs/hooks-reference.html#useref
+useReducer - https://reactjs.org/docs/hooks-reference.html#usereducer

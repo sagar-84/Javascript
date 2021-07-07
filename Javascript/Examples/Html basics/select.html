@@ -1,0 +1,26 @@
+<html>
+    <head>
+        <title>Radio Button</title>
+        <script type="text/javascript">
+        document.write("<h2>Radio Button</h2>")
+        function fn1(){
+           var select = document.getElementById("selectbox");
+           alert(select.options[select.selectedIndex].value);
+        }
+
+        </script>
+    </head>
+        <body>
+            <select id="selectbox">
+                <option value="Option1">Option1</option>
+                <option value="Option2">Option2</option>
+                <option value="Option3">Option3</option>
+                
+            
+           </select>
+           <br>
+           <button onclick="fn1()">Click me</button>
+
+        </body>
+    
+</html>

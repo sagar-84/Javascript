@@ -1,0 +1,21 @@
+<!--Not working -->
+<html>
+    <head>
+        <title>DOM</title>
+        <script type="text/javascript">
+        function fn1(){
+            var str1 = document.getElementById("text1");
+            var str2 = document.getElementById("text2");
+            if (str1==str2)
+                alert("Success");
+            else
+                alert("Failure");
+        }
+        </script>
+        <body>
+            <input id="text1" placeholder="Username">
+            <input id="text2" placeholder="Password">
+            <button id = "btn1" onclick="fn1()">Click Me</button>
+        </body>
+    </head>
+</html>

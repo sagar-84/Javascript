@@ -1,0 +1,21 @@
+ What are the differences between redux-saga and redux-thunk? -
+ Both Redux Thunk and Redux Saga take care of dealing with side effects. 
+ In most of the scenarios, Thunk allows Promises to deal with them, whereas Saga uses Generators.
+
+ How to access redux store outside a react component? -
+You just need to export the store from the module where it created with createStore.
+store = createStore(myReducer);
+export default store;
+
+ What are reducers in redux? -
+ The reducer is a pure function that takes the previous state and an action, and returns the next state.
+(previousState, action) => newState
+
+How to add multiple middlewares to Redux? -
+You can use applyMiddleware
+import { createStore, applyMiddleware } from 'redux'
+const createStoreWithMiddleware = applyMiddleware(ReduxThunk, logger)(createStore);
+
+redux architecture - https://engineering.zalando.com/posts/2016/08/design-patterns-redux.html?gh_src=4n3gxh1?gh_src=4n3gxh1
+Flux architecture - https://www.freecodecamp.org/news/an-introduction-to-the-flux-architectural-pattern-674ea74775c9/
+React virtual DOM – https://reactjs.org/docs/reconciliation.html

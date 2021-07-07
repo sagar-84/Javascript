@@ -1,0 +1,33 @@
+<html>
+    <head>
+        <title>Radio Button</title>
+        <script type="text/javascript">
+
+        function fn1()
+        {
+           var para = document.getElementsByTagName("p");
+            document.write(para);
+        //    para[0].styles.fontsize = 50;
+        //    para[1].styles.color = "red";
+        //    para[2].styles.fontweight = "bold";
+        //    para[3].styles.fontstyle = "italic";
+        for (var i=0; i<=para.length; i++)
+           {
+               para[i].styles.fontsize = 50;
+           }
+        }
+
+        </script>
+    </head>
+        <body>
+           <p> This is a pargraph 1</p>
+           <p> This is a pargraph 2</p>
+           <p> This is a pargraph 3</p>
+           <p> This is a pargraph 4</p>
+           <p> This is a pargraph 5</p>
+           <br>
+           <button onclick="fn1()">Click me</button>
+
+        </body>
+    
+</html>

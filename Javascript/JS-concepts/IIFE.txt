@@ -1,0 +1,39 @@
+An IIFE (Immediately Invoked Function Expression) is a JavaScript function that runs as soon as it is defined.
+IEFE has its own scope and restricts functions and variables to become global.
+
+// Syntax
+(function () {
+  statements
+})();
+
+Contains 2 major parts:
+1) The first is the anonymous function with lexical scope enclosed within the Grouping Operator (). This prevents accessing variables within the IIFE idiom as well as polluting the global scope.
+2) The second part creates the immediately invoked function expression () through which the JavaScript engine will directly interpret the function.
+
+Use cases:
+1) Avoid polluting the global namespace: If we have some initiation code that we don't need to use again, we could use the IIFE pattern. 
+    (function () {
+      // some initiation code 
+      let firstVariable;
+      let secondVariable; 
+    })();
+
+// firstVariable and secondVariable will be discarded after the function is executed.
+
+2) For loop with var before ES6
+    // What will the following code output?
+    for (var i = 0; i < 3; i++) {
+    setTimeout(function () {
+        console.log(i);
+    }, 1000 + i);
+    }
+    // Prints 3 3 times after 1, 1.1, and 1.2 seconds.
+
+    // Solution using IIFE
+    for (var i = 0; i < 3; i++) {
+    setTimeout(function (x) {
+        return function () {
+        console.log(x);
+        };
+    }(i), 1000 + i);
+    }

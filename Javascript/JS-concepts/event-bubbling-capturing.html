@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<head>
+  <title>Event Bubbling and Capturing</title>
+  <style>
+    div {
+      min-width: 200px;
+      min-height: 100px;
+      padding: 30px;
+      border: 1px solid black;
+    }
+  </style>
+</head>
+<body>
+  <div id="grandparent">
+    <div id="parent">
+      <div id="child"></div>
+    </div>
+  </div>
+  <script>
+    document.querySelector("#grandparent").addEventListener("click", () => {
+      console.log("Grandparent Clicked!");
+    }, true); // Capturing. useCapture = true => Capturing & useCapture = false => Bubbling (By default useCapture = false)
+
+    document.querySelector("#parent").addEventListener("click", (event) => {
+      console.log("Parent Clicked!");
+      event.stopPropagation(); // stop propagation at this point
+    }, true); // Bubbling.
+
+    document.querySelector("#child").addEventListener("click", () => {
+      console.log("Child Clicked!");
+    }, true); // Capturing.
+  </script>
+</body>

@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<head>
+  <title>Debouncing</title>
+</head>
+<body>
+  <input type="text" onkeyup="betterFunction()" />
+  <script>
+    // Debouncing in  javascript
+
+    const getData = () => {
+      // calls an API and gets data
+      console.log("Fetching data..."); // Onkeyup will fetch data again and again.
+    };
+
+    const debounce = function (fn, delay) {
+      let timer;
+      return function () {
+        let context = this,
+          args = arguments;
+        clearTimeout(timer);
+        timer = setTimeout(() => {
+          fn.apply(context, args);
+        }, delay);
+      };
+    };
+    const betterFunction = debounce(getData, 300); // Only call getData() method when the difference of time b/w 2 keypress events is  >= 300ms
+  </script>
+</body>

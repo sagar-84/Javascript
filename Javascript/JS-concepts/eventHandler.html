@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>Random color example — event handler property</title>
+    <style>
+      button {
+        margin: 10px;
+      }
+    </style>
+  </head>
+
+  <body>
+    <button>Change color 1</button>
+    <button>Change color 2</button>
+    <button>Change color 3</button>
+    <button>Change color 4</button>
+
+    <script>
+      // for single button
+      const btn = document.querySelector("button");
+
+      // when we have multiple buttons
+      const buttons = document.querySelectorAll("button");
+
+      for (let i = 0; i < buttons.length; i++) {
+        buttons[i].onclick = bgChange;
+      }
+
+      function bgChange(e) {
+        const rndCol =
+          "rgb(" + random(255) + "," + random(255) + "," + random(255) + ")";
+        document.body.style.backgroundColor = rndCol; // setting a random background on the page.
+        e.target.style.backgroundColor = rndCol; // setting a random background color on the button, not the page.
+      }
+
+      function random(number) {
+        return Math.floor(Math.random() * number);
+      }
+
+      btn.onclick = bgChange;
+
+      //Adding and removing event handlers
+      btn.addEventListener("click", bgChange);
+      btn.removeEventListener("click", bgChange);
+
+    </script>
+  </body>
+</html>

@@ -1,0 +1,38 @@
+What are container components? -
+Container components are primarily concerned with how things work
+they are often stateful
+they are responsible for providing data and behavior to their children (usually presentational components)
+
+class ImageContainer extends React.Component {
+   constructor() {
+      super();
+      
+      this.state = {
+         images: []
+      };
+   }
+   componentDidMount() {
+      fetch('/api/current_user/image_list')
+         .then(response => response.json())
+         .then(images => this.setState({images}));
+   }
+   render() {
+      return (
+         <div className="image-list">
+            {this.state.images.map(image => {
+               <Image image={image}/>
+            })}
+         </div>
+      )
+   }
+}
+export default ImageContainer
+
+what are presentational components? -
+Presentational Components are primarily concerned with how things look
+probably only contain a render method and little else logic
+
+const Image = props => (
+   <img src={props.image} />
+)
+export default Image
